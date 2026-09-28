@@ -12,9 +12,9 @@ Using your previous HTML/CSS/Bootstrap solo storefront Web project user sign-up 
 
 - JavaScript (page behaviors and field integrity checks) Web Storefront: Performs the field validations
  
- For example, this code would call the JavaScript function validate() and pass in the current object (input): <input type="text" class="form-control" id="username" placeholder="Enter username" onfocusout="validate(this)">
+`For example, this code would call the JavaScript function validate() and pass in the current object (input): <input type="text" class="form-control" id="username" placeholder="Enter username" onfocusout="validate(this)"> `
 
-validate.png
+<img width="531" height="225" alt="image" src="https://github.com/user-attachments/assets/6fd2f895-ee47-4ed3-936e-299e40dc6b55" />
 
 You can use a Javascript style sheet rule to make it red. obj.style.color="#FF0000" or you can use the form-control color option.
 
