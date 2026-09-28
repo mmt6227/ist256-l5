@@ -13,7 +13,7 @@
 
  <div class="container">
  </div>
- <form class="m-3">
+ <form class="m-3" onsubmit="submitForm(event)">
     <div style="width: 500px;height: 300px;margin: 0 auto;">
      <div class="mb-3">
         <label for="exampleInputUsername" class="form-label">Username:</label>
@@ -55,16 +55,44 @@ function validate(obj) {
     }
   }
 
-  if (obj.id === "confirmPassword") {
-    const password = document.getElementById("password");
-    if (obj.value !== password.value) {
-      obj.style.color = "#FF0000";
+  if (obj.id === "password" || obj.id === "confirmPassword") {
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    
+    if (password && confirmPassword && password !== confirmPassword) {
+      document.getElementById("confirmPassword").style.color = "#FF0000";
+      document.getElementById("password").style.color = "#FF0000";
       return false;
+    } else if (password && confirmPassword && password === confirmPassword) {
+      document.getElementById("password").style.color = "#000000";
+      document.getElementById("confirmPassword").style.color = "#000000";
     }
   }
 
   obj.style.color = "#000000";
   return true;
+}
+
+function submitForm(event) {
+  event.preventDefault();
+  
+  const username = document.getElementById("username");
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  const confirmPassword = document.getElementById("confirmPassword");
+  
+  let isValid = true;
+  [username, email, password, confirmPassword].forEach(field => {
+    if (!validate(field)) {
+      isValid = false;
+    }
+  });
+  
+  if (isValid) {
+    alert("Form submitted successfully!");
+  } else {
+    alert("Please fix all errors before submitting.");
+  }
 }
 </script>
     
