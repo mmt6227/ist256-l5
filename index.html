@@ -30,7 +30,7 @@
        onfocusout="validate(this)">
     </div>
      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Comfirm Password:</label>
+        <label for="exampleInputPassword1" class="form-label">Confirm Password:</label>
         <input type="password" class="form-control" id="confirmPassword" 
        onfocusout="validate(this)">
     </div>
@@ -90,6 +90,10 @@ function submitForm(event) {
   
   if (isValid) {
     alert("Form submitted successfully!");
+    document.querySelector("form").reset();
+    [username, email, password, confirmPassword].forEach(field => {
+      field.style.color = "#000000";
+    });
   } else {
     alert("Please fix all errors before submitting.");
   }
