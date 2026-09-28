@@ -12,7 +12,11 @@ Using your previous HTML/CSS/Bootstrap solo storefront Web project user sign-up 
 
 - JavaScript (page behaviors and field integrity checks) Web Storefront: Performs the field validations
  
-`For example, this code would call the JavaScript function validate() and pass in the current object (input): <input type="text" class="form-control" id="username" placeholder="Enter username" onfocusout="validate(this)"> `
+For example, this code would call the JavaScript function validate() and pass in the current object (input): 
+
+```html5
+<input type="text" class="form-control" id="username" placeholder="Enter username" onfocusout="validate(this)"> 
+```
 
 <img width="531" height="225" alt="image" src="https://github.com/user-attachments/assets/6fd2f895-ee47-4ed3-936e-299e40dc6b55" />
 
