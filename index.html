@@ -7,58 +7,68 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-<!-- Content will go here -->
- <h1 class="text-center" style="padding: 20px;">User Signup</h1>
- <p class="text-center">Create and account to get started.</p>
+    <h1 class="text-center" style="padding: 20px;">User Signup</h1>
+    <p class="text-center">Create an account to get started.</p>
 
- <div class="container">
- </div>
- <form class="m-3">
-    <div style="width: 500px;height: 300px;margin: 0 auto;">
-     <div class="mb-3">
-        <label for="exampleInputUsername" class="form-label">Username:</label>
-        <input type="text" class="form-control" id="username" 
-       placeholder="Enter username" onfocusout="validate(this)">
+    <div class="container">
+        <form class="m-3">
+            <div style="max-width: 500px; margin: 0 auto;">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username"
+                        onfocus="clearError(this)" onfocusout="validate(this)">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email"
+                        onfocus="clearError(this)" onfocusout="validate(this)">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password"
+                        onfocus="clearError(this)" onfocusout="validate(this)">
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password:</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter password"
+                        onfocus="clearError(this)" onfocusout="validate(this)">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary"
+                    onclick="window.open('https://mmt6227.github.io/ist256-l2')">Back to storefront</button>
+            </div>
+        </form>
     </div>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address:</label>
-        <input type="email" class="form-control" id="email" 
-       onfocusout="validate(this)">    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="password" 
-       onfocusout="validate(this)">
-    </div>
-     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Comfirm Password:</label>
-        <input type="password" class="form-control" id="confirmPassword" 
-       onfocusout="validate(this)">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <button class="btn btn-secondary" onclick="window.open('https\://mmt6227.github.io/ist256-l2')">Back to storefront</button>
-</div>
-</form>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 
-<script>
-function validate(obj) {
-  if (obj.value.trim() === "") {
-    obj.style.color = "#FF0000";
-    return false;
-  }
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 
-  if (obj.id === "confirmPassword") {
-    const password = document.getElementById("password");
-    if (obj.value !== password.value) {
-      obj.style.color = "#FF0000";
-      return false;
+    <script>
+    function validate(obj) {
+        var message = "";
+        if (obj.value == "") {
+            message = "Field is required";
+        } else if (obj.id == "email" && !(obj.value.includes("@") && obj.value.includes("."))) {
+            message = "Enter an email like joe@test.com";
+        } else if (obj.id == "confirmPassword" && obj.value != document.getElementById("password").value) {
+            message = "Passwords do not match";
+        }
+
+        if (message != "") {
+            obj.value = message;
+            obj.type = "text";                 
+            obj.style.borderColor = "#FF0000"; 
+        } else {
+            obj.style.borderColor = "";         
+        }
     }
-  }
 
-  obj.style.color = "#000000";
-  return true;
-}
-</script>
-    
+    function clearError(obj) {
+        if (obj.style.borderColor == "rgb(255, 0, 0)") {
+            obj.value = "";
+            obj.style.borderColor = "";
+            if (obj.id.toLowerCase().includes("password")) obj.type = "password";
+        }
+    }
+    </script>
 </body>
 </html>
