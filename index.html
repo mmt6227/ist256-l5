@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootstrap Practice</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
     <h1 class="text-center" style="padding: 20px;">User Signup</h1>
@@ -42,33 +43,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 
-    <script>
-    function validate(obj) {
-        var message = "";
-        if (obj.value == "") {
-            message = "Field is required";
-        } else if (obj.id == "email" && !(obj.value.includes("@") && obj.value.includes("."))) {
-            message = "Enter an email like joe@test.com";
-        } else if (obj.id == "confirmPassword" && obj.value != document.getElementById("password").value) {
-            message = "Passwords do not match";
-        }
-
-        if (message != "") {
-            obj.value = message;
-            obj.type = "text";                 
-            obj.style.borderColor = "#FF0000"; 
-        } else {
-            obj.style.borderColor = "";         
-        }
-    }
-
-    function clearError(obj) {
-        if (obj.style.borderColor == "rgb(255, 0, 0)") {
-            obj.value = "";
-            obj.style.borderColor = "";
-            if (obj.id.toLowerCase().includes("password")) obj.type = "password";
-        }
-    }
-    </script>
+    <script src="static/script.js"></script>
 </body>
 </html>
